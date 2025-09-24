@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATEXpert – tematy kategorii</title>
+    <meta
+      name="description"
+      content="Lista tematów ATEX pogrupowanych w kategoriach. Wybierz zagadnienie, aby przejść do artykułu przygotowanego przez ekspertów."
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#lista-tematow">Przejdź do listy tematów</a>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">ATEXpert</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+        <div class="nav-links" id="menu">
+          <a href="index.html#sekcje">Sekcje</a>
+          <a href="index.html#gra">Gra Ex</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero hero--compact">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <h1 data-category-title>Tematy kategorii</h1>
+          <p class="intro-text" data-category-description>
+            Wczytywanie informacji o kategorii. Za chwilę wyświetlimy listę tematów.
+          </p>
+          <div class="cta-group">
+            <a class="secondary" href="index.html">Wróć do strony głównej</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap section" id="lista-tematow">
+      <div class="topics-list" data-topic-list></div>
+    </main>
+
+    <footer class="footer" id="kontakt">
+      <div class="wrap footer-inner">
+        <div>
+          <strong>ATEXpert</strong> – szkolenia, audyty i wsparcie projektowe dla stref Ex.
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:lyzwinski.biznes@gmail.com">lyzwinski.biznes@gmail.com</a>
+          <a href="tel:+48796465503">+48&nbsp;796&nbsp;465&nbsp;503</a>
+        </div>
+        <div class="footer-nav">
+          <a href="index.html#sekcje">Sekcje</a>
+          <a href="index.html#gra">Gra Ex</a>
+          <a href="index.html#o-nas">O nas</a>
+        </div>
+        <div class="footer-meta">© <span data-year></span> ATEXpert. Wszystkie prawa zastrzeżone.</div>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="noscript">
+        <p>Ta strona wymaga JavaScript do wyświetlenia listy tematów. Włącz obsługę skryptów w przeglądarce.</p>
+      </div>
+    </noscript>
+
+    <script type="module" src="scripts/category.js"></script>
+  </body>
+</html>
