@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATEXpert – Kompendium wiedzy o bezpieczeństwie wybuchowym</title>
+    <meta
+      name="description"
+      content="Kompletny przewodnik po świecie bezpieczeństwa wybuchowego: dyrektywy ATEX, iskrobezpieczeństwo, bariery Ex i audyty."
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">ATEXpert</a>
+        <div class="nav-links">
+          <a href="#baza-wiedzy">Baza Wiedzy</a>
+          <a href="#narzedzia">Narzędzia</a>
+          <a href="#o-nas">O nas</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <h1>Kompendium Wiedzy ATEX</h1>
+        <p class="intro-text">
+          Kompletny przewodnik po świecie bezpieczeństwa wybuchowego. Znajdziesz tu wszystko – od absolutnych podstaw,
+          przez zawiłości prawne i certyfikację, aż po zaawansowane zagadnienia inżynierskie i nowe technologie.
+        </p>
+      </div>
+    </header>
+
+    <main class="wrap main-content">
+      <section aria-labelledby="baza-wiedzy">
+        <h2 id="baza-wiedzy" class="visually-hidden">Baza wiedzy ATEXpert</h2>
+        <div class="topic-grid" data-topic-grid></div>
+      </section>
+
+      <section class="about" id="o-nas">
+        <h2>Kim jesteśmy?</h2>
+        <p>
+          ATEXpert to zespół inżynierów i audytorów specjalizujących się w bezpieczeństwie przeciwwybuchowym. Od ponad
+          10 lat pomagamy zakładom przemysłowym projektować, wdrażać i utrzymywać instalacje zgodne z dyrektywami ATEX.
+          Na blogu dzielimy się praktyczną wiedzą z audytów, certyfikacji i projektów modernizacyjnych.
+        </p>
+      </section>
+
+      <section class="cta" id="narzedzia">
+        <h2>Gotów na pogłębienie wiedzy?</h2>
+        <p>Skorzystaj z profesjonalnego wsparcia. Umów się na bezpłatną konsultację lub audyt wstępny.</p>
+        <a href="#kontakt" aria-label="Umów się na bezpłatną konsultację">Skontaktuj się z nami</a>
+      </section>
+
+      <p class="disclaimer">
+        📌 Uwaga: Treść ma charakter informacyjny i nie zastępuje profesjonalnej porady technicznej ani prawnej.
+        Decyzje projektowe należy zawsze podejmować na podstawie analizy ryzyka i aktualnych norm IEC/EN 60079 oraz
+        dyrektyw ATEX.
+      </p>
+    </main>
+
+    <footer class="footer" id="kontakt">
+      <div class="footer-inner">
+        <div>
+          <strong>ATEXpert</strong> – szkolenia, audyty i wsparcie projektowe w obszarze ochrony przeciwwybuchowej.
+        </div>
+        <div class="footer-nav">
+          <a href="mailto:kontakt@atexpert.pl">kontakt@atexpert.pl</a>
+          <a href="tel:+48123123123">+48 123 123 123</a>
+          <a href="#o-nas">O nas</a>
+          <a href="#narzedzia">Oferta</a>
+        </div>
+        <div>© <span data-year></span> ATEXpert. Wszelkie prawa zastrzeżone.</div>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="wrap" style="padding-top: 2rem;">
+        <p>
+          Ta strona wymaga JavaScript do wyświetlania listy artykułów. Włącz obsługę skryptów w przeglądarce, aby
+          skorzystać z pełnej bazy wiedzy.
+        </p>
+      </div>
+    </noscript>
+
+    <script>
+      document.querySelector('[data-year]').textContent = new Date().getFullYear();
+    </script>
+    <script type="module" src="scripts/index.js"></script>
+  </body>
+</html>
