@@ -61,6 +61,24 @@ document.addEventListener('DOMContentLoaded', () => {
         contentContainer.append(list);
         break;
       }
+      case 'heading': {
+        const level = block.level === 3 ? 'h3' : 'h2';
+        const heading = document.createElement(level);
+        heading.textContent = block.text;
+        contentContainer.append(heading);
+        break;
+      }
+      case 'quote': {
+        const quote = document.createElement('blockquote');
+        quote.textContent = block.text;
+        if (block.caption) {
+          const cite = document.createElement('cite');
+          cite.textContent = block.caption;
+          quote.append(cite);
+        }
+        contentContainer.append(quote);
+        break;
+      }
       default:
         break;
     }

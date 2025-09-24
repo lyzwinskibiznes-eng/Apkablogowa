@@ -1,6 +1,11 @@
 import { categories } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderTopicGrid();
+  initializeSearch();
+});
+
+function renderTopicGrid() {
   const topicGrid = document.querySelector('[data-topic-grid]');
 
   if (!topicGrid) {
@@ -72,7 +77,192 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   setupTooltips();
-});
+}
+
+function initializeSearch() {
+  const searchForm = document.querySelector('[data-search-form]');
+  const searchInput = document.querySelector('[data-search-input]');
+  const categoryFilter = document.querySelector('[data-category-filter]');
+  const resultsContainer = document.querySelector('[data-search-results]');
+  const resultsCount = document.querySelector('[data-results-count]');
+  const emptyState = document.querySelector('[data-empty-state]');
+  const clearButton = document.querySelector('[data-clear-search]');
+
+  if (
+    !searchForm ||
+    !searchInput ||
+    !categoryFilter ||
+    !resultsContainer ||
+    !resultsCount ||
+    !emptyState
+  ) {
+    return;
+  }
+
+  populateCategoryFilter(categoryFilter);
+
+  const postsIndex = buildPostIndex();
+
+  const updateResults = () => {
+    const selectedCategory = categoryFilter.value;
+    const searchTerm = searchInput.value.trim();
+    const normalizedTerm = normalizeText(searchTerm);
+
+    const filtered = postsIndex.filter((post) => {
+      const matchesCategory = selectedCategory === 'all' || post.categoryId === selectedCategory;
+      const matchesSearch =
+        normalizedTerm.length === 0 ||
+        normalizeText(`${post.title} ${post.summary}`).includes(normalizedTerm);
+
+      return matchesCategory && matchesSearch;
+    });
+
+    renderPostList(resultsContainer, filtered);
+    updateResultCount(resultsCount, filtered.length, {
+      categoryValue: selectedCategory,
+      searchTerm,
+    });
+    toggleEmptyState(emptyState, filtered.length === 0);
+    toggleClearButton(clearButton, searchTerm.length > 0 || selectedCategory !== 'all');
+  };
+
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    updateResults();
+  });
+
+  searchInput.addEventListener('input', updateResults);
+  categoryFilter.addEventListener('change', updateResults);
+
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      searchInput.value = '';
+      categoryFilter.value = 'all';
+      updateResults();
+      searchInput.focus();
+    });
+  }
+
+  updateResults();
+}
+
+function populateCategoryFilter(select) {
+  categories.forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category.id;
+    option.textContent = category.title;
+    select.append(option);
+  });
+}
+
+function buildPostIndex() {
+  return categories.flatMap((category) =>
+    category.posts.map((post) => ({
+      ...post,
+      categoryId: category.id,
+      categoryTitle: category.title,
+    })),
+  );
+}
+
+function renderPostList(container, posts) {
+  container.innerHTML = '';
+
+  posts.forEach((post) => {
+    const card = document.createElement('article');
+    card.className = 'post-card';
+    card.setAttribute('role', 'listitem');
+
+    const meta = document.createElement('div');
+    meta.className = 'post-card__meta';
+
+    const categoryBadge = document.createElement('span');
+    categoryBadge.className = 'post-card__category';
+    categoryBadge.textContent = post.categoryTitle;
+
+    const separator = document.createElement('span');
+    separator.className = 'post-card__separator';
+    separator.setAttribute('aria-hidden', 'true');
+    separator.textContent = '•';
+
+    const readTime = document.createElement('span');
+    readTime.className = 'post-card__read-time';
+    readTime.textContent = post.readTime;
+
+    meta.append(categoryBadge, separator, readTime);
+
+    const title = document.createElement('h3');
+    title.className = 'post-card__title';
+    title.textContent = post.title;
+
+    const excerpt = document.createElement('p');
+    excerpt.className = 'post-card__excerpt';
+    excerpt.textContent = post.summary;
+
+    const link = document.createElement('a');
+    link.className = 'post-card__link';
+    link.href = `post.html?slug=${encodeURIComponent(post.slug)}`;
+    link.textContent = 'Czytaj artykuł';
+
+    card.append(meta, title, excerpt, link);
+    container.append(card);
+  });
+}
+
+function updateResultCount(element, count, { categoryValue, searchTerm }) {
+  if (!element) return;
+
+  let message = formatCount(count);
+  const details = [];
+
+  if (categoryValue && categoryValue !== 'all') {
+    const selectedCategory = categories.find((category) => category.id === categoryValue);
+    if (selectedCategory) {
+      details.push(`w kategorii „${selectedCategory.title}”`);
+    }
+  }
+
+  if (searchTerm) {
+    details.push(`dla frazy „${searchTerm}”`);
+  }
+
+  if (details.length > 0) {
+    message = `${message} ${details.join(' oraz ')}`;
+  }
+
+  element.textContent = message;
+}
+
+function toggleEmptyState(element, isEmpty) {
+  if (!element) return;
+  element.hidden = !isEmpty;
+}
+
+function toggleClearButton(button, isActive) {
+  if (!button) return;
+  button.hidden = !isActive;
+}
+
+function normalizeText(value) {
+  if (!value) return '';
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
+
+function formatCount(value) {
+  if (value === 0) {
+    return 'Brak artykułów spełniających podane kryteria';
+  }
+  if (value === 1) {
+    return 'Znaleziono 1 artykuł';
+  }
+  if (value >= 2 && value <= 4) {
+    return `Znaleziono ${value} artykuły`;
+  }
+  return `Znaleziono ${value} artykułów`;
+}
 
 function setupTooltips() {
   const tooltip = document.createElement('div');

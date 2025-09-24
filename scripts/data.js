@@ -34,6 +34,20 @@ export const categories = [
             ],
           },
           {
+            type: 'heading',
+            level: 2,
+            text: 'Dlaczego dokumentacja jest kluczowa?',
+          },
+          {
+            type: 'paragraph',
+            text: 'Dokumentacja systemu Ex i powinna opisywać konfigurację obwodów, limity energetyczne oraz wyniki obliczeń. Zadbaj o aktualność schematów, protokołów i deklaracji, ponieważ to one stanowią podstawę audytu ATEX.',
+          },
+          {
+            type: 'quote',
+            text: 'System iskrobezpieczny jest tak solidny, jak najsłabszy element w łańcuchu – od zasilacza, przez przewody, po urządzenie polowe.',
+            caption: 'dr inż. Anna Kowalska, audytor ATEX',
+          },
+          {
             type: 'paragraph',
             text: 'Zastosowanie iskrobezpieczeństwa wymaga stworzenia dokumentacji technicznej, analizy ryzyka oraz właściwego doboru aparatury. W zamian otrzymujemy bardzo wysoki poziom bezpieczeństwa i możliwość serwisowania urządzeń bez wyłączania instalacji.',
           },
@@ -86,6 +100,11 @@ export const categories = [
             text: 'Dyrektywa 2014/34/UE (ATEX 114) nakłada obowiązki na producentów urządzeń przeznaczonych do stosowania w atmosferach wybuchowych. Z kolei ATEX 153 (dyrektywa 1999/92/WE) dotyczy użytkowników końcowych i bezpieczeństwa pracowników.',
           },
           {
+            type: 'heading',
+            level: 2,
+            text: 'Co z praktyką zakładową?',
+          },
+          {
             type: 'paragraph',
             text: 'W praktyce oznacza to, że dokumentacja producenta powinna trafić do zakładu, a pracodawca musi przygotować ocenę ryzyka oraz instrukcje obsługi. Obie dyrektywy uzupełniają się i wymagają współpracy obu stron.',
           },
@@ -109,6 +128,11 @@ export const categories = [
           {
             type: 'paragraph',
             text: 'Parametry C₀/L₀ opisują maksymalną pojemność i indukcyjność, jaką może dołączyć system w strefie zagrożonej. Z kolei Cᵢ/Lᵢ to wartości danego urządzenia polowego. Sumaryczne wartości muszą mieścić się poniżej dopuszczalnych limitów.',
+          },
+          {
+            type: 'heading',
+            level: 2,
+            text: 'Praktyczna wskazówka projektanta',
           },
           {
             type: 'paragraph',

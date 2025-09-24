@@ -34,6 +34,51 @@
     </header>
 
     <main class="wrap main-content">
+      <section class="library" aria-labelledby="wyszukiwarka">
+        <div class="library-heading">
+          <h2 id="wyszukiwarka">Znajdź właściwy artykuł</h2>
+          <p>
+            Przefiltruj całą bazę wiedzy ATEXpert według słów kluczowych lub kategorii, aby szybko dotrzeć do poradników,
+            checklist i analiz przygotowanych przez naszych ekspertów.
+          </p>
+        </div>
+
+        <form class="search-form" data-search-form role="search">
+          <div class="search-fields">
+            <div class="field">
+              <label class="field-label" for="search-input">Szukaj w artykułach</label>
+              <input
+                id="search-input"
+                type="search"
+                name="query"
+                placeholder="np. bariera galwaniczna"
+                autocomplete="off"
+                data-search-input
+              />
+            </div>
+            <div class="field">
+              <label class="field-label" for="category-filter">Filtruj kategorię</label>
+              <select id="category-filter" data-category-filter>
+                <option value="all">Wszystkie kategorie</option>
+              </select>
+            </div>
+          </div>
+          <div class="search-actions">
+            <button class="search-submit" type="submit">Wyszukaj</button>
+            <button class="search-clear" type="button" data-clear-search hidden>Wyczyść</button>
+          </div>
+        </form>
+
+        <div class="search-status">
+          <span class="results-count" data-results-count aria-live="polite">Ładujemy artykuły…</span>
+        </div>
+
+        <div class="post-grid" data-search-results role="list"></div>
+        <p class="search-empty" data-empty-state hidden>
+          Nie znaleziono artykułów spełniających podane kryteria. Spróbuj innego hasła lub wybierz inną kategorię.
+        </p>
+      </section>
+
       <section aria-labelledby="baza-wiedzy">
         <h2 id="baza-wiedzy" class="visually-hidden">Baza wiedzy ATEXpert</h2>
         <div class="topic-grid" data-topic-grid></div>
