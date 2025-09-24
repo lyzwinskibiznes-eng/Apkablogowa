@@ -14,5 +14,3 @@ Po uruchomieniu wejdź na `http://localhost:8000/`.
 ## Struktura
 
 Cała zawartość serwisu znajduje się w katalogu `docs/`, co umożliwia bezpośrednie hostowanie w GitHub Pages (opcja *Deploy from branch* → `main` / `docs`).
-
-W katalogu głównym znajduje się uproszczony `index.html` oraz `post.html`, które przekierowują na `/docs/…`. Dzięki temu serwis będzie działał poprawnie niezależnie od tego, czy GitHub Pages jest skonfigurowane na katalog główny czy na `docs/`.

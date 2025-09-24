@@ -3,136 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ATEXpert – Kompendium wiedzy o bezpieczeństwie przeciwwybuchowym</title>
-    <meta
-      name="description"
-      content="Sekcje wiedzy ATEX, interaktywna gra doboru urządzeń i komplet artykułów o iskrobezpieczeństwie przygotowane przez ekspertów."
+
     />
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <a class="skip-link" href="#sekcje">Przejdź do listy sekcji</a>
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="index.html" class="logo" aria-label="ATEXpert – strona główna">ATEXpert</a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
-        <div class="nav-links" id="menu">
-          <a href="#sekcje">Sekcje</a>
-          <a href="#gra">Gra Ex</a>
+
           <a href="#kontakt">Kontakt</a>
         </div>
       </div>
     </nav>
 
-    <header class="hero" role="banner">
-      <div class="wrap hero-inner">
-        <div class="hero-copy">
-          <p class="badge">Eksperci ATEX z 20-letnim doświadczeniem</p>
-          <h1>Kompendium Wiedzy ATEX</h1>
-          <p class="intro-text">
-            Wszystkie kluczowe zagadnienia o bezpieczeństwie przeciwwybuchowym zebrane w jednym miejscu. Od podstaw i
-            wymagań prawnych, przez dobór aparatury i utrzymanie ruchu, aż po case studies oraz nowoczesne technologie.
-          </p>
-          <div class="cta-group">
-            <a class="primary" href="#sekcje">Poznaj sekcje</a>
-            <a class="secondary" href="#gra">Zagraj w quiz Ex</a>
-          </div>
-        </div>
-        <div class="hero-highlight" aria-hidden="true">
-          <span>ATEX</span>
-          <span>IECEx</span>
-          <span>Iskrobezpieczeństwo</span>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <section class="wrap section" id="sekcje" aria-labelledby="sekcje-heading">
-        <div class="section-heading">
-          <h2 id="sekcje-heading">Sekcje bazy wiedzy</h2>
-          <p>Wybierz obszar, a następnie przejdź do wszystkich tematów i artykułów w danej kategorii.</p>
-        </div>
-        <div class="category-grid" data-category-grid></div>
-      </section>
-
-      <section class="wrap about section" id="o-nas" aria-labelledby="o-nas-heading">
-        <div class="about-copy">
-          <h2 id="o-nas-heading">Dlaczego ATEXpert?</h2>
-          <p>
-            Zespół ATEXpert łączy doświadczenie projektowe, audytowe i szkoleniowe. Tworzymy dokumentację DTR i DoC,
-            prowadzimy audyty ATEX 153, a także wspieramy działy utrzymania ruchu w ocenie instalacji Ex. Ta baza wiedzy
-            gromadzi praktyczne notatki, listy kontrolne oraz przykłady zaczerpnięte z realnych wdrożeń.
-          </p>
-        </div>
-        <div class="about-card">
-          <h3>Masz pytania?</h3>
-          <p>Napisz do nas lub zadzwoń – odpowiemy w ciągu 24 godzin roboczych.</p>
-          <a class="contact-link" href="mailto:lyzwinski.biznes@gmail.com">lyzwinski.biznes@gmail.com</a>
-          <a class="contact-link" href="tel:+48796465503">+48&nbsp;796&nbsp;465&nbsp;503</a>
-        </div>
-      </section>
-
-      <section class="wrap section game" id="gra" aria-labelledby="gra-heading">
-        <div class="section-heading">
-          <h2 id="gra-heading">Gra: dobierz urządzenie do strefy Ex</h2>
-          <p>
-            Sprawdź swoją wiedzę projektową. W każdym pytaniu dobierz właściwe urządzenie do opisanej strefy Ex, zgodnie z
-            zasadami iskrobezpieczeństwa i ochrony przeciwwybuchowej.
-          </p>
-        </div>
-        <div class="game-container" data-game>
-          <div class="game-status">
-            <p><strong>Wynik:</strong> <span data-score>0</span> / <span data-round>0</span></p>
-            <p data-feedback>Wybierz odpowiedź, aby rozpocząć.</p>
-            <div class="game-buttons">
-              <button type="button" class="primary" data-next>Losuj pytanie</button>
-              <button type="button" class="secondary" data-reset>Resetuj grę</button>
-            </div>
-          </div>
-          <div class="game-question">
-            <h3 data-scenario-heading>Przykładowy scenariusz</h3>
-            <p data-scenario-description>Wylosuj pytanie, aby rozpocząć rozgrywkę.</p>
-            <ul class="game-options" data-options></ul>
-          </div>
-          <aside class="game-rules">
-            <h3>Zasady</h3>
-            <ol>
-              <li>W każdej rundzie losujemy scenariusz strefy zagrożonej wybuchem.</li>
-              <li>Wybierz urządzenie, które spełnia wymagania danej strefy oraz kategorii sprzętu.</li>
-              <li>Po udzieleniu odpowiedzi otrzymasz komentarz i przechodzisz do kolejnego pytania.</li>
-              <li>Możesz zresetować grę, aby rozpocząć od nowa i poprawić wynik.</li>
-            </ol>
-          </aside>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer" id="kontakt">
-      <div class="wrap footer-inner">
-        <div>
-          <strong>ATEXpert</strong> – szkolenia, audyty i wsparcie projektowe dla stref Ex.
-        </div>
-        <div class="footer-contact">
-          <a href="mailto:lyzwinski.biznes@gmail.com">lyzwinski.biznes@gmail.com</a>
-          <a href="tel:+48796465503">+48&nbsp;796&nbsp;465&nbsp;503</a>
-        </div>
-        <div class="footer-nav">
-          <a href="#sekcje">Sekcje</a>
-          <a href="#gra">Gra Ex</a>
-          <a href="#o-nas">O nas</a>
-        </div>
-        <div class="footer-meta">© <span data-year></span> ATEXpert. Wszystkie prawa zastrzeżone.</div>
-      </div>
-    </footer>
-
-    <noscript>
-      <div class="noscript">
-        <p>
-          Strona korzysta z JavaScript do generowania listy sekcji oraz działania gry edukacyjnej. Włącz obsługę
-          skryptów, aby zobaczyć pełną zawartość.
-        </p>
-      </div>
-    </noscript>
 
     <script type="module" src="scripts/index.js"></script>
   </body>

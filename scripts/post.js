@@ -1,4 +1,34 @@
+import { findPostBySlug } from './data.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const article = document.querySelector('[data-article]');
+  const articleTitle = document.querySelector('#article-title');
+  const articleMeta = document.querySelector('[data-article-meta]');
+  const contentContainer = document.querySelector('[data-article-content]');
+  const heroHeading = document.querySelector('[data-hero-heading]');
+
+  if (!article || !articleMeta || !contentContainer) {
+    return;
+  }
+
+  if (!slug) {
+    renderError('Nie znaleziono artykułu. Użyj listy wpisów aby kontynuować.');
+    return;
+  }
+
+  const post = findPostBySlug(slug);
+
+  if (!post) {
+    renderError('Ups! Wpis, którego szukasz, nie istnieje lub został przeniesiony.');
+    return;
+  }
+
+  heroHeading.textContent = post.title;
+  if (articleTitle) {
+    articleTitle.textContent = post.title;
+  }
   article.setAttribute('aria-labelledby', 'article-title');
 
   document.title = `${post.title} – ATEXpert`;
@@ -11,7 +41,6 @@
     metaParts.push(`czas czytania: ${post.readTime}`);
   }
   articleMeta.textContent = metaParts.join(' • ');
-
 
   contentContainer.innerHTML = '';
   post.content.forEach((block) => {
@@ -32,14 +61,29 @@
         contentContainer.append(list);
         break;
       }
-
+      case 'heading': {
+        const level = block.level === 3 ? 'h3' : 'h2';
+        const heading = document.createElement(level);
+        heading.textContent = block.text;
+        contentContainer.append(heading);
+        break;
+      }
+      case 'quote': {
+        const quote = document.createElement('blockquote');
+        quote.textContent = block.text;
+        if (block.caption) {
+          const cite = document.createElement('cite');
+          cite.textContent = block.caption;
+          quote.append(cite);
+        }
+        contentContainer.append(quote);
         break;
       }
       default:
         break;
     }
   });
-
+});
 
 function renderError(message) {
   const container = document.querySelector('[data-article]');
@@ -62,4 +106,3 @@ function renderError(message) {
     </div>
   `;
 }
-
